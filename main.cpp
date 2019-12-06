@@ -124,39 +124,44 @@ int main() {
         cin >> c;
         switch(c){
             case 1:
-                cout << "Put expression" << endl;
-                cin >> e;
-                for( int i = 0; i <= e.length(); i++){
-                if(e[i] == '+'){
+            cout << "Put expression" << endl;
+            cin >> e;
+        for( int i = 0; i <= e.length(); i++){
+               if(e[i] == '+'){
                 array.push_back(new Plus());
-                }
+                
+               }
                     
                 else if(e[i] == '-'){
                     
                     array.push_back(new Minus());
                     
                 }
+                    
                 else if(e[i] == '*'){
                                  
                 array.push_back(new Multiplcation());
                                  
-                             }
+                }
+                    
                 else if(e[i] == '/'){
                                  
                 array.push_back(new Divide());
                                  
-                             }
+                }
                 else if(e[i] == '^'){
                                  
                     array.push_back(new Power());
-                             }
+                
+                }
                 else{
                     num += e[i];
                 }
            
                   
                 }
-                      array.push_back(new integer(stoi(num)));
+                
+                array.push_back(new integer(stoi(num)));
             /*
                 for (int i=0; i < array.size(); i++){
                     cout << array[i] -> getValue() << endl;
@@ -171,24 +176,24 @@ vector <Operator*> postFix;
     if(array[j]->getType() == "num"){
         postFix.push_back(array[j]);
                     }
-            else{
-                if(stack.empty()){
+    else{
+        if(stack.empty()){
                 stack.push(array[j]);
                   }
-                  else{
-            if(stack.top()->getP() < array[j]->getP())
-            stack.push(array[j]);
+    else{
+        if(stack.top()->getP() < array[j]->getP())
+        stack.push(array[j]);
             
-            else{
-                          
-while(!stack.empty() && stack.top()->getP() == array[j] ->getP()){
+    else{
+                        
+       while(!stack.empty() && stack.top()->getP() == array[j] ->getP()){
             postFix.push_back(stack.top());
             stack.pop();
                  
             
-        }
+}
           
-                    stack.push(array[j]);
+        stack.push(array[j]);
         
          }
          }
@@ -196,34 +201,29 @@ while(!stack.empty() && stack.top()->getP() == array[j] ->getP()){
     
                          
                }
-                while(!stack.empty()){
-                        postFix.push_back(stack.top());
-                        stack.pop();
+    while(!stack.empty()){
+    postFix.push_back(stack.top());
+        stack.pop();
      
     }
           
                
                 //while
-                cout << "Postfix expression: " ;
-            for(int a = 0; a< postFix.size(); a++){
-                          if(postFix[a]->getType() == "num"){
-                             cout<<postFix[a]->getValue();
+    cout << "Postfix expression: " ;
+    for(int a = 0; a< postFix.size(); a++){
+        if(postFix[a]->getType() == "num"){
+            cout<<postFix[a]->getValue();
                           }
-                          else if(postFix[a] ->getType() == "op"){
-                              cout<<postFix[a]->getOp();
+        else if(postFix[a] ->getType() == "op"){
+            cout<<postFix[a]->getOp();
                               
                           }
                 
-                      }//for
-                       cout << endl;
+            }//for
+        cout << endl;
                         
                 
-               
-                    
-       
-                
-        
-                break;
+  
         }    //switch
     
     }//while
