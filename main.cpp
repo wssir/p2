@@ -173,24 +173,26 @@ int main() {
 vector <Operator*> postFix;
                 
  for(int j=0; j <array.size(); j++){
+     
     if(array[j]->getType() == "num"){
         postFix.push_back(array[j]);
-                    }
+    
+    }
+     
     else{
         if(stack.empty()){
                 stack.push(array[j]);
-                  }
+    }
     else{
-        if(stack.top()->getP() < array[j]->getP())
+        
+        if(stack.top()->getP() < array[j]->getP()){
         stack.push(array[j]);
-            
+        }
     else{
                         
        while(!stack.empty() && stack.top()->getP() == array[j] ->getP()){
             postFix.push_back(stack.top());
             stack.pop();
-                 
-            
 }
           
         stack.push(array[j]);
@@ -200,7 +202,7 @@ vector <Operator*> postFix;
         }
     
                          
-               }
+}
     while(!stack.empty()){
     postFix.push_back(stack.top());
         stack.pop();
