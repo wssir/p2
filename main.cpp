@@ -42,58 +42,51 @@ public:
 class Plus : public Operator{
 public:
     Plus(){
+        p = 1;
         symbol = "+";
         op = "op";
 
     }
-   int getP(){
-       return p=1;
-    }
+
 };
 class Minus : public Operator{
 public:
     Minus(){
+        p = 1;
         symbol = "-";
         op = "op";
         
     }
-    int getP(){
-    return p = 1;
-    }
-    };
+       };
 class Divide : public Operator{
 public:
     Divide(){
-        
+        p = 2;
         symbol = "/";
         op = "op";
     }
-    int getP(){
-    return p = 2;
-    }
+   
 };
 
 class Multiplcation : public Operator{
 public:
     Multiplcation(){
+        p = 2;
         symbol = "*";
         op = "op";
         
     }
-    int getP(){
-    return p = 2;
-}
+ 
 };
 
 class Power : public Operator{
 public:
     Power(){
+        p = 3;
         symbol = "^";
         op = "op";
     }
-    int getP(){
-     return p = 3;
-    }
+    
 };
 
 class integer : public Operator{
@@ -106,8 +99,6 @@ public:
         return value;
     }
 };
-    
-    
 
 int main() {
     
@@ -128,33 +119,41 @@ int main() {
             cin >> e;
         for( int i = 0; i <= e.length(); i++){
                if(e[i] == '+'){
+                 array.push_back(new integer(stoi(num)));
+                   num = "";
                 array.push_back(new Plus());
                 
                }
                     
                 else if(e[i] == '-'){
-                    
+                    array.push_back(new integer(stoi(num)));
+                    num = "";
                     array.push_back(new Minus());
                     
                 }
                     
                 else if(e[i] == '*'){
-                                 
+                array.push_back(new integer(stoi(num)));
+                num = "";
                 array.push_back(new Multiplcation());
                                  
                 }
                     
                 else if(e[i] == '/'){
+                array.push_back(new integer(stoi(num)));
+                num = "";
                                  
                 array.push_back(new Divide());
                                  
                 }
                 else if(e[i] == '^'){
-                                 
-                    array.push_back(new Power());
+                array.push_back(new integer(stoi(num)));
+                num = "";
+                array.push_back(new Power());
                 
                 }
                 else{
+                  
                     num += e[i];
                 }
            
@@ -162,6 +161,7 @@ int main() {
                 }
                 
                 array.push_back(new integer(stoi(num)));
+                
             /*
                 for (int i=0; i < array.size(); i++){
                     cout << array[i] -> getValue() << endl;
